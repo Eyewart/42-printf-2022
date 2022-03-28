@@ -6,7 +6,7 @@
 /*   By: Hassan <hrifi-la@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 15:26:36 by Hassan            #+#    #+#             */
-/*   Updated: 2022/03/28 18:56:37 by Hassan           ###   ########.fr       */
+/*   Updated: 2022/03/28 23:27:56 by Hassan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 void	ft_putstr(char *str, int *nb)
 {
+	if (!str)
+	{
+		*nb += write(1, "(null)", 6);
+		return ;
+	}
 	while (*str)
 	{
 		*nb += write(1, str, 1);
@@ -45,7 +50,24 @@ void	ft_putnbr(int n, int *nb)
 		*nb += write(1, &tmp[i], 1);
 }
 
-void	ft_hex (unsigned long n, int *nb)
+void	ft_putun(unsigned int n, int *nb)
+{
+	char			tmp[10];
+	int				i;
+
+	i = 0;
+	if (!n)
+		*nb = *nb + write(1, "0", 1);
+	while (n)
+	{
+		tmp[i++] = (n % 10) + 48;
+		n = n / 10;
+	}
+	while (i--)
+		*nb += write(1, &tmp[i], 1);
+}
+
+void	ft_hex(unsigned long n, int *nb, int flag)
 {
 	char	tab_nb[100];
 	char	*base;
@@ -54,7 +76,13 @@ void	ft_hex (unsigned long n, int *nb)
 	
 	index = 0;
 	i = 0;
-	base = "0123456789ABCDEF";
+	base = "0123456789abcdef";
+	if (n == 0 && flag == 1)
+		*nb += write(1, "(nil)", 5);
+	else if (!n)
+		*nb += write(1, "0", 1);
+	else if (flag == 1)
+		*nb += write(1, "0x", 2);
 	while (n)
 	{
 		tab_nb[i++] = n % 16;
@@ -67,7 +95,7 @@ void	ft_hex (unsigned long n, int *nb)
 	}
 }
 
-void	ft_hex_lower(unsigned int n, int *nb)
+void	ft_hex_upper(unsigned int n, int *nb)
 {
 	char	tab_nb[100];
 	char	*base;
@@ -76,7 +104,9 @@ void	ft_hex_lower(unsigned int n, int *nb)
 	
 	index = 0;
 	i = 0;
-	base = "0123456789abcdef";
+	base = "0123456789ABCDEF";
+	if (!n)
+		*nb += write(1, "0", 1);
 	while (n)
 	{
 		tab_nb[i++] = n % 16;

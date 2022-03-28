@@ -1,7 +1,93 @@
 #include "ft_printf.h"
-
-int main()
+#include <stdio.h>
+#include <limits.h>
+int     main(void)
 {
-	char *test = "hihihi";
-	ft_printf("helloworld %s", test);
+    int real_result = 0;
+    int fake_result = 0;
+    real_result =    printf("[%c]\n", 32);
+    fake_result = ft_printf("[%c]\n", 32);
+    printf("REAL = %d | FAKE = %d\n", real_result, fake_result);
+    real_result =    printf("[%c]\n", 126);
+    fake_result = ft_printf("[%c]\n", 126);
+    printf("REAL = %d | FAKE = %d\n", real_result, fake_result);
+printf("1/////////////////////////////////////////////////////////////////////\n\n");
+    real_result =    printf("[%s]\n", (char*)0);
+    fake_result = ft_printf("[%s]\n", (void*)0);
+    printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
+    real_result =    printf("[%s]\n", "");
+    fake_result = ft_printf("[%s]\n", "");
+    printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
+    real_result =    printf("[%s]\n", "  hjgasfd_asdf asdf f ");
+    fake_result = ft_printf("[%s]\n", "  hjgasfd_asdf asdf f ");
+    printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
+printf("2/////////////////////////////////////////////////////////////////////\n\n");
+    char *s = "yeeeeee!!!";
+    real_result =    printf("[%p]\n", (void*)0);
+    fake_result = ft_printf("[%p]\n", (void*)0);
+    printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
+    real_result =    printf("[%p]\n", s);
+    fake_result = ft_printf("[%p]\n", s);
+    printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
+printf("3/////////////////////////////////////////////////////////////////////\n\n");
+    real_result =    printf("[%d]\n", 0);
+    fake_result = ft_printf("[%d]\n", 0);
+    printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
+    real_result =    printf("[%d]\n", INT_MIN);
+    fake_result = ft_printf("[%d]\n", INT_MIN);
+    printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
+    real_result =    printf("[%d]\n", INT_MAX);
+    fake_result = ft_printf("[%d]\n", INT_MAX);
+    printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
+printf("4/////////////////////////////////////////////////////////////////////\n\n");
+    real_result =    printf("[%i]\n", 0);
+    fake_result = ft_printf("[%i]\n", 0);
+    printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
+    real_result =    printf("[%i]\n", INT_MIN);
+    fake_result = ft_printf("[%i]\n", INT_MIN);
+    printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
+    real_result =    printf("[%i]\n", INT_MAX);
+    fake_result = ft_printf("[%i]\n", INT_MAX);
+    printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
+printf("5/////////////////////////////////////////////////////////////////////\n\n");
+    real_result =    printf("[%u]\n", 0);
+    fake_result = ft_printf("[%u]\n", 0);
+    printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
+    real_result =    printf("[%u]\n", UINT_MAX);
+    fake_result = ft_printf("[%u]\n", UINT_MAX);
+    printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
+    real_result =    printf("[%u]\n", INT_MAX);
+    fake_result = ft_printf("[%u]\n", INT_MAX);
+    printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
+printf("6/////////////////////////////////////////////////////////////////////\n\n");
+    real_result =    printf("[%x]\n", 0);
+    fake_result = ft_printf("[%x]\n", 0);
+    printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
+    real_result =    printf("[%x]\n", UINT_MAX);
+    fake_result = ft_printf("[%x]\n", UINT_MAX);
+    printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
+    real_result =    printf("[%x]\n", INT_MAX);
+    fake_result = ft_printf("[%x]\n", INT_MAX);
+    printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
+printf("7/////////////////////////////////////////////////////////////////////\n\n");
+    real_result =    printf("[%X]\n", 0);
+    fake_result = ft_printf("[%X]\n", 0);
+    printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
+    real_result =    printf("[%X]\n", UINT_MAX);
+    fake_result = ft_printf("[%X]\n", UINT_MAX);
+    printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
+    real_result =    printf("[%X]\n", INT_MAX);
+    fake_result = ft_printf("[%X]\n", INT_MAX);
+    printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
+printf("8/////////////////////////////////////////////////////////////////////\n\n");
+    real_result =    printf("[%c%s%p%d%i%u%x%X%%]\n", 97, "", (void*)0, 0, 0, 0, 0, 0);
+    fake_result = ft_printf("[%c%s%p%d%i%u%x%X%%]\n", 97, "", (void*)0, 0, 0, 0, 0, 0);
+    printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
+    real_result =    printf("[%c %s %p %d %i %u %x %X %%]\n", 122, "Hello_World!", s, INT_MAX, INT_MIN, UINT_MAX, 1234, 1234);
+    fake_result = ft_printf("[%c %s %p %d %i %u %x %X %%]\n", 122, "Hello_World!", s, INT_MAX, INT_MIN, UINT_MAX, 1234, 1234, 0);
+    printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
+    real_result =    printf("[...%c...%s...%p...%d...%i...%u...%x...%X...%%...]\n", 'z', "", (void*)0, -1, -1, 4321, 4321, 4321);
+    fake_result = ft_printf("[...%c...%s...%p...%d...%i...%u...%x...%X...%%...]\n", 'z', "", (void*)0, -1, -1, 4321, 4321, 4321);
+    printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
+    return (0);
 }
