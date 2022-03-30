@@ -36,7 +36,7 @@ printf("3/////////////////////////////////////////////////////////////////////\n
     real_result =    printf("[%d]\n", INT_MIN);
     fake_result = ft_printf("[%d]\n", INT_MIN);
     printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
-    real_result =    printf("[%d]\n", INT_MAX);
+	real_result =    printf("[%d]\n", INT_MAX);
     fake_result = ft_printf("[%d]\n", INT_MAX);
     printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
 printf("4/////////////////////////////////////////////////////////////////////\n\n");
@@ -88,6 +88,13 @@ printf("8/////////////////////////////////////////////////////////////////////\n
     printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
     real_result =    printf("[...%c...%s...%p...%d...%i...%u...%x...%X...%%...]\n", 'z', "", (void*)0, -1, -1, 4321, 4321, 4321);
     fake_result = ft_printf("[...%c...%s...%p...%d...%i...%u...%x...%X...%%...]\n", 'z', "", (void*)0, -1, -1, 4321, 4321, 4321);
+    printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
+printf("9/////////////////////////////////////////////////////////////////////\n\n");
+	real_result =    printf("[%d]\n", INT_MIN - 1);
+    fake_result = ft_printf("[%d]\n", INT_MIN - 1);
+    printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
+	real_result =    printf("[%d]\n", INT_MAX + 1);
+    fake_result = ft_printf("[%d]\n", INT_MAX + 1);
     printf("REAL = %d | FAKE = %d\n\n", real_result, fake_result);
     return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Hassan <hrifi-la@student.s19.be>           +#+  +:+       +#+        */
+/*   By: hrifi-la <hrifi-la@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 15:26:36 by Hassan            #+#    #+#             */
-/*   Updated: 2022/03/28 23:27:56 by Hassan           ###   ########.fr       */
+/*   Updated: 2022/03/30 17:10:24 by hrifi-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,12 @@ void	ft_hex(unsigned long n, int *nb, int flag)
 	char	*base;
 	int		i;
 	int		index;
-	
+
 	index = 0;
 	i = 0;
 	base = "0123456789abcdef";
 	if (n == 0 && flag == 1)
-		*nb += write(1, "(nil)", 5);
+		*nb += write(1, "0x0", 3);
 	else if (!n)
 		*nb += write(1, "0", 1);
 	else if (flag == 1)
@@ -101,7 +101,7 @@ void	ft_hex_upper(unsigned int n, int *nb)
 	char	*base;
 	int		i;
 	int		index;
-	
+
 	index = 0;
 	i = 0;
 	base = "0123456789ABCDEF";
